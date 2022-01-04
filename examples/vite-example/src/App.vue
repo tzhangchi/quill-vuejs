@@ -5,43 +5,50 @@ import "quill/dist/quill.bubble.css";
 
 import { quillEditor } from "quill-vuejs";
 export default {
-	data() {
+	// data() {
+
+	// },
+	setup() {
 		return {
-			content: "<h2>I am Example</h2>",
-			editorOption: {
-				// Some Quill options...
+			data: {
+				content: "", //<h2>I am Example</h2>
+				editorOption: {
+					// Some Quill options...
+				},
 			},
 		};
 	},
-	components: {
-		quillEditor,
-	},
-	methods: {
-		onEditorBlur(quill) {
-			console.log("editor blur!", quill);
-		},
-		onEditorFocus(quill) {
-			console.log("editor focus!", quill);
-		},
-		onEditorReady(quill) {
-			console.log("editor ready!", quill);
-		},
-		onEditorChange({ quill, html, text }) {
-			console.log("editor change!", quill, html, text);
-			this.content = html;
-		},
-	},
+	// components: {
+	// 	quillEditor,
+	// },
+	// methods: {
+	// 	onEditorBlur(quill) {
+	// 		console.log("editor blur!", quill);
+	// 	},
+	// 	onEditorFocus(quill) {
+	// 		console.log("editor focus!", quill);
+	// 	},
+	// 	onEditorReady(quill) {
+	// 		console.log("editor ready!", quill);
+	// 	},
+	// 	onEditorChange({ quill, html, text }) {
+	// 		console.log("editor change!", quill, html, text);
+	// 		this.content = html;
+	// 	},
+	// },
 };
 </script>
 
 <template>
-	<quill-editor
-		:content="content"
-		:options="editorOption"
-		@blur="onEditorBlur($event)"
-		@focus="onEditorFocus($event)"
-		@ready="onEditorReady($event)"
-	/>
+	<div>
+		<quill-editor
+			:content="content"
+			:options="editorOption"
+			@blur="onEditorBlur($event)"
+			@focus="onEditorFocus($event)"
+			@ready="onEditorReady($event)"
+		></quill-editor>
+	</div>
 </template>
 
 <style>
