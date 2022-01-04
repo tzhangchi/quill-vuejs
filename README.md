@@ -93,7 +93,7 @@ Quill.register('modules/yourQuillModule', yourQuillModule)
 ``` vue
 <template>
   <!-- Two-way Data-Binding -->
-  <quill-vuejs
+  <VueQuillEditor
     ref="myQuillEditor"
     v-model="content"
     :options="editorOption"
@@ -103,7 +103,7 @@ Quill.register('modules/yourQuillModule', yourQuillModule)
   />
 
   <!-- Or manually control the data synchronization -->
-  <quill-vuejs
+  <VueQuillEditor
     :content="content"
     :options="editorOption"
     @change="onEditorChange($event)"

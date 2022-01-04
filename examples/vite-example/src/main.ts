@@ -1,13 +1,14 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-import Vue from 'vue'
-import VueQuillEditor from './../../../dist/quill-vuejs'
+// import VueQuillEditor from 'quill-vuejs'
 
-import 'quill/dist/quill.core.css' // import styles
-import 'quill/dist/quill.snow.css' // for snow theme
-import 'quill/dist/quill.bubble.css' // for bubble theme
+// import 'quill/dist/quill.core.css' // import styles
+// import 'quill/dist/quill.snow.css' // for snow theme
+// import 'quill/dist/quill.bubble.css' // for bubble theme
 
-App.use(VueQuillEditor, /* { default global options } */);
+const app = createApp(App);
 
-createApp(App).mount('#app')
+// app.use(VueQuillEditor);
+
+app.mount('#app')
