@@ -1,0 +1,28 @@
+{
+  "name": "quill-vuejs",
+  "description": "Quill editor component for Vue",
+  "main": "./dist/quill-vuejs.js",
+  "author": {
+    "name": "Surmon",
+    "email": "surmon@foxmail.com",
+    "url": "http://surmon.me"
+  },
+  "license": "MIT",
+  "keywords": [
+    "quill-vuejs",
+    "vue quill",
+    "vue text editor",
+    "vue rich text editor",
+    "vue web editor",
+    "vue editor"
+  ],
+  "homepage": "https://cg0101.github.io/quill-vuejs",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
