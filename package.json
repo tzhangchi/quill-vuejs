@@ -35,7 +35,16 @@
     "vue text editor",
     "vue rich text editor",
     "vue web editor",
-    "vue editor"
+    "vue editor",
+    "vue-quill",
+    "vue 3 quill component",
+    "vue 3 quill editor",
+    "vue 3 text editor",
+    "vue 3 rich text editor",
+    "vue 3 web editor",
+    "vue 3 editor",
+    "vue 3 wysiwyg",
+    "vue 3 wysiwyg editor"
   ],
   "scripts": {
     "build": "cross-env NODE_ENV=production webpack --config config/build.conf.js",
