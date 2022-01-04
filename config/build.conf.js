@@ -21,7 +21,7 @@ module.exports = merge(baseConfig, {
 		path: path.resolve(__dirname, "../dist"),
 		publicPath: "/",
 		filename: "[name].js",
-		library: "QuillVuejs",
+		library: "VueQuillEditor",
 		libraryTarget: "umd",
 	},
 	devtool: "#source-map",
