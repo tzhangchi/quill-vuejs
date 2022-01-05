@@ -18,9 +18,8 @@
 
 ### Example
 
-- [Component example page](https://cg0101.github.io/quill-vuejs/)
-- [CDN example page](https://jsfiddle.net/surmon/fpojgkmy/)
-
+- [CDN example page](https://jsfiddle.net/zhangchi/73dbez6h/3/)
+- [Component example page](./examples/vue2-component-example)
 
 ### Install
 
@@ -36,15 +35,54 @@ yarn add quill-vuejs
 **CDN**
 
 ``` html
-<link rel="stylesheet" href="path/to/quill.core.css"/>
-<link rel="stylesheet" href="path/to/quill.snow.css"/>
-<link rel="stylesheet" href="path/to/quill.bubble.css"/>
-<script type="text/javascript" src="path/to/quill.js"></script>
-<script type="text/javascript" src="path/to/vue.min.js"></script>
-<script type="text/javascript" src="path/to/dist/quill-vuejs.js"></script>
-<script type="text/javascript">
-  Vue.use(window.VueQuillEditor)
-</script>
+ <div id="app">
+        <quill-editor  
+        ref="quillEditor"
+        class="editor"
+        v-model="content"
+        :options="editorOption"
+        @blur="onEditorBlur($event)"
+        @focus="onEditorFocus($event)"
+        @ready="onEditorReady($event)"
+        />
+    </div>
+    <link rel="stylesheet" href="./../../node_modules/quill/dist/quill.core.css"/>
+    <link rel="stylesheet" href="./../../node_modules/quill/dist/quill.snow.css"/>
+    <link rel="stylesheet" href="./../../node_modules/quill/dist/quill.bubble.css"/>
+    <script type="text/javascript" src="./../../node_modules/quill/dist/quill.js"></script>
+    <script type="text/javascript" src="./../../node_modules/vue/dist/vue.min.js"></script>
+    <script type="text/javascript" src="../..//dist/quill-vuejs.js"></script>
+    <script type="text/javascript">
+        Vue.use(window.VueQuillEditor);
+        var app = new Vue({
+            el: '#app',
+            data: {
+                content: '<h2>I\'m quill vuejs example</h2>',
+                editorOption: {
+                    theme: 'snow'
+                }
+            },
+            methods: {
+                onEditorBlur(quill) {
+                    console.log('editor blur!', quill)
+                },
+                onEditorFocus(quill) {
+                    console.log('editor focus!', quill)
+                },
+                onEditorReady(quill) {
+                    console.log('editor ready!', quill)
+                }
+            },
+            computed: {
+                editor() {
+                    return this.$refs.quillEditor.quill
+                }
+            },
+            mounted() {
+               console.log('this is quill instance object', this.editor)
+            }
+        });
+    </script>
 ```
 
 ### Mount
