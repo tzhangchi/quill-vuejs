@@ -7,9 +7,9 @@
 
 <script>
 // require sources
-import _Quill from "quill";
+import Quill_ from "quill";
 
-const Quill = window.Quill || _Quill;
+const Quill = window.Quill || Quill_;
 const defaultOptions = {
 	theme: "snow",
 	boundary: document.body,
