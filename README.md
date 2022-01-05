@@ -19,7 +19,7 @@
 ### Example
 
 - [CDN example page](https://jsfiddle.net/zhangchi/73dbez6h/14/)
-- [Component example page](./examples/vue2-component-example)
+- [Component example page](./examples/vue2-component-example/src/App.vue)
 
 ### Install
 
