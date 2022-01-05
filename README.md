@@ -134,7 +134,7 @@ Quill.register('modules/yourQuillModule', yourQuillModule)
 ``` vue
 <template>
   <!-- Two-way Data-Binding -->
-  <VueQuillEditor
+  <quill-editor 
     ref="myQuillEditor"
     v-model="content"
     :options="editorOption"
@@ -144,7 +144,7 @@ Quill.register('modules/yourQuillModule', yourQuillModule)
   />
 
   <!-- Or manually control the data synchronization -->
-  <VueQuillEditor
+  <quill-editor
     :content="content"
     :options="editorOption"
     @change="onEditorChange($event)"
@@ -194,9 +194,7 @@ Quill.register('modules/yourQuillModule', yourQuillModule)
 ```
 
 ### Projects using quill-vuejs
-- [Tamiat CMS](https://github.com/tamiat/tamiat/)
-- ...
-
+- 
 
 ### Issues
 - [Add attributes from toolbar options](https://github.com/quilljs/quill/issues/1084)
