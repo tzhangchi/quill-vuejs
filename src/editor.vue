@@ -121,7 +121,7 @@ export default {
 
 				// Set editor content
 				if (this.value || this.content) {
-					this.quill.pasteHTML(this.value || this.content);
+					this.quill.setContents(this.quill.clipboard.convert(this.value || this.content));
 				}
 
 				// Disabled editor
@@ -160,7 +160,7 @@ export default {
 			if (this.quill) {
 				if (newVal && newVal !== this._content) {
 					this._content = newVal;
-					this.quill.pasteHTML(newVal);
+					this.quill.setContents(this.quill.clipboard.convert(newVal));
 				} else if (!newVal) {
 					this.quill.setText("");
 				}
@@ -171,7 +171,7 @@ export default {
 			if (this.quill) {
 				if (newVal && newVal !== this._content) {
 					this._content = newVal;
-					this.quill.pasteHTML(newVal);
+					this.quill.setContents(this.quill.clipboard.convert(newVal));
 				} else if (!newVal) {
 					this.quill.setText("");
 				}
