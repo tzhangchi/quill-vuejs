@@ -199,9 +199,9 @@ Quill.register('modules/yourQuillModule', yourQuillModule)
 ### Issues
 - [Add attributes from toolbar options](https://github.com/quilljs/quill/issues/1084)
 - [Option to insert an image from a URL](https://github.com/quilljs/quill/issues/893)
-- [How quill-vuejs combine with the syntax highlighter module of highlight.js](https://github.com/cg0101/quill-vuejs/issues/39)
-- [配合 element-ui 实现上传图片/视频到七牛 demo](https://github.com/cg0101/quill-vuejs/issues/102)
-- [How to fix “Can’t find variable: Quill”, “Quill is undefined”, “window.Quill is undefined” errors when trying to use Quill modules that use Webpack in Nuxt/SSR](https://github.com/cg0101/quill-vuejs/issues/171#issuecomment-370253411)
+- [How quill-vuejs combine with the syntax highlighter module of highlight.js](https://github.com/surmon-china/vue-quill-editor/issues/39)
+- [配合 element-ui 实现上传图片/视频到七牛 demo](https://github.com/surmon-china/vue-quill-editor/issues/102)
+- [How to fix “Can’t find variable: Quill”, “Quill is undefined”, “window.Quill is undefined” errors when trying to use Quill modules that use Webpack in Nuxt/SSR](https://github.com/surmon-china/vue-quill-editor/issues/171#issuecomment-370253411)
 
 
 ### Quill Modules
