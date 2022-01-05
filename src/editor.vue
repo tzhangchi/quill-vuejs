@@ -1,5 +1,5 @@
 <template>
-	<div class="quill-vuejs">
+	<div class="quill-editor">
 		<slot name="toolbar"></slot>
 		<div ref="editor"></div>
 	</div>
@@ -69,7 +69,7 @@ if (typeof Object.assign != "function") {
 
 // export
 export default {
-	name: "quill-vuejs",
+	name: "quill-editor",
 	data() {
 		return {
 			_options: {},

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vue2 cdn example</title>
+    <style>
+        .quill-editor,
+        .content {
+            background-color: white;
+        }
+
+        .editor {
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <quill-editor  
+        ref="quillEditor"
+        class="editor"
+        v-model="content"
+        :options="editorOption"
+        @blur="onEditorBlur($event)"
+        @focus="onEditorFocus($event)"
+        @ready="onEditorReady($event)"
+        />
+    </div>
+    <link rel="stylesheet" href="./../../node_modules/quill/dist/quill.core.css"/>
+    <link rel="stylesheet" href="./../../node_modules/quill/dist/quill.snow.css"/>
+    <link rel="stylesheet" href="./../../node_modules/quill/dist/quill.bubble.css"/>
+    <script type="text/javascript" src="./../../node_modules/quill/dist/quill.js"></script>
+    <script type="text/javascript" src="./../../node_modules/vue/dist/vue.min.js"></script>
+    <script type="text/javascript" src="../..//dist/quill-vuejs.js"></script>
+    <script type="text/javascript">
+        Vue.use(window.VueQuillEditor);
+        var app = new Vue({
+            el: '#app',
+            data: {
+                content: '<h2>I\'m quill vuejs example</h2>',
+                editorOption: {
+                    theme: 'snow'
+                }
+            },
+            methods: {
+                onEditorBlur(quill) {
+                    console.log('editor blur!', quill)
+                },
+                onEditorFocus(quill) {
+                    console.log('editor focus!', quill)
+                },
+                onEditorReady(quill) {
+                    console.log('editor ready!', quill)
+                }
+            },
+            computed: {
+                editor() {
+                    return this.$refs.quillEditor.quill
+                }
+            },
+            mounted() {
+               console.log('this is quill instance object', this.editor)
+            }
+        });
+    </script>
+</body>
+</html>

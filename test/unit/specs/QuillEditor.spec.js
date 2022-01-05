@@ -8,7 +8,7 @@ window.Vue = Vue;
 // console.log('--------VueQuillEditor', VueQuillEditor)
 // console.log('--------VueQuillEditorSsr', VueQuillEditorSsr)
 
-describe("quill-vuejs", () => {
+describe("quill-editor", () => {
 	Vue.use(VueQuillEditor, {
 		placeholder: "global placeholder",
 	});
@@ -26,7 +26,7 @@ describe("quill-vuejs", () => {
 	describe("Global install spa:component", () => {
 		it(" - should can get the quill element", (done) => {
 			const vm = new Vue({
-				template: `<div><quill-vuejs v-model="content"></quill-vuejs></div>`,
+				template: `<div><quill-editor v-model="content"></quill-editor></div>`,
 				data: {
 					content: "<p>test content</p>",
 				},
@@ -46,7 +46,7 @@ describe("quill-vuejs", () => {
 	describe("Get instance by attr ref and set global options", () => {
 		it(" - should get the quill instance and global options", (done) => {
 			const vm = new Vue({
-				template: `<div><quill-vuejs ref="myTextEditor" v-model="content"></quill-vuejs></div>`,
+				template: `<div><quill-editor ref="myTextEditor" v-model="content"></quill-editor></div>`,
 				data: {
 					content: "<p>test content</p>",
 				},
@@ -74,7 +74,7 @@ describe("quill-vuejs", () => {
 	describe("Set component options", () => {
 		it(" - should quill.placeholder === component.options.placeholder", (done) => {
 			const vm = new Vue({
-				template: `<div><quill-vuejs ref="myTextEditor" :options="editorOption" v-model="content"></quill-vuejs></div>`,
+				template: `<div><quill-editor ref="myTextEditor" :options="editorOption" v-model="content"></quill-editor></div>`,
 				data: {
 					content: "<p>test content</p>",
 					editorOption: {
@@ -106,7 +106,7 @@ describe("quill-vuejs", () => {
 	describe("Component data binding", () => {
 		it(" - should change the quill content after change the component content data", (done) => {
 			const vm = new Vue({
-				template: `<div><quill-vuejs v-model="content" ref="myTextEditor"></quill-vuejs></div>`,
+				template: `<div><quill-editor v-model="content" ref="myTextEditor"></quill-editor></div>`,
 				data: {
 					content: "<p>test content</p>",
 				},
@@ -135,14 +135,14 @@ describe("quill-vuejs", () => {
 			const eventLogs = [];
 			const vm = new Vue({
 				template: `<div>
-                      <quill-vuejs ref="myTextEditor"
+                      <quill-editor ref="myTextEditor"
                                     :value="content"
                                     @blur="onEditorBlur"
                                     @focus="onEditorFocus"
                                     @ready="onEditorReady"
                                     @change="onEditorChange"
                                     @input="onEditorInput">
-                      </quill-vuejs>
+                      </quill-editor>
                   </div>
                   `,
 				data: {
@@ -205,11 +205,11 @@ describe("quill-vuejs", () => {
 			const eventLogs = [];
 			const vm = new Vue({
 				template: `<div>
-                      <quill-vuejs ref="myTextEditor"
+                      <quill-editor ref="myTextEditor"
                                         v-model="content"
                                         :options="editorOption"
                                         @ready="onEditorReady">
-                      </quill-vuejs>
+                      </quill-editor>
                   </div>
                   `,
 				components: {
@@ -253,13 +253,13 @@ describe("quill-vuejs", () => {
 			const eventLogs = [];
 			const vm = new Vue({
 				template: `<div>
-                      <quill-vuejs :key="key"
+                      <quill-editor :key="key"
                                     :value="content"
                                     :ref="'editor' + key"
                                     v-for="(content, key) in contents"
                                     :options="buildOptions(key)"
                                     @ready="onEditorReady(key)">
-                      </quill-vuejs>
+                      </quill-editor>
                   </div>
                   `,
 				data: {
@@ -311,7 +311,7 @@ describe("quill-vuejs", () => {
 			const eventLogs = [];
 			const vm = new Vue({
 				template: `<div>
-                    <div class="quill-vuejs" 
+                    <div class="quill-editor" 
                          ref="editor"
                          @ready="onEditorReady"
                          :value="content"
@@ -352,7 +352,7 @@ describe("quill-vuejs", () => {
 			const eventLogs = [];
 			const vm = new Vue({
 				template: `<div>
-                    <div class="quill-vuejs" 
+                    <div class="quill-editor" 
                          v-quill="buildOptions(key)"
                          v-for="(content, key) in contents"
                          @ready="onEditorReady(key)"
