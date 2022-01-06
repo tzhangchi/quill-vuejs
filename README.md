@@ -15,7 +15,8 @@
 
 基于 [Quill](https://github.com/quilljs/quill)、适用于 Vue 的富文本编辑器，支持服务端渲染和单页应用。
 
-
+## Preview
+<img src="./assets/example.png"/>
 ### Example
 
 - [CDN example page](https://jsfiddle.net/zhangchi/73dbez6h/14/)
