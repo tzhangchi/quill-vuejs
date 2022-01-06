@@ -1,7 +1,6 @@
 import Quill from "quill";
 import Vue from "vue/dist/vue.js";
 import VueQuillEditor, { quillEditor, install } from "../../../src/index.js";
-import VueQuillEditorSsr from "../../../src/ssr.js";
 
 window.Vue = Vue;
 
@@ -12,9 +11,7 @@ describe("quill-editor", () => {
 	Vue.use(VueQuillEditor, {
 		placeholder: "global placeholder",
 	});
-	Vue.use(VueQuillEditorSsr, {
-		placeholder: "global ssr placeholder",
-	});
+
 
 	// 测试解构是否成功
 	it("can get the object in es module", () => {
@@ -305,120 +302,5 @@ describe("quill-editor", () => {
 		});
 	});
 
-	// SSR 全局安装测试
-	describe("Global install ssr:directive", () => {
-		it(" - should get quill instance and capture event", (done) => {
-			const eventLogs = [];
-			const vm = new Vue({
-				template: `<div>
-                    <div class="quill-editor" 
-                         ref="editor"
-                         @ready="onEditorReady"
-                         :value="content"
-                         v-quill:myQuillEditor="editorOption">
-                    </div>
-                  </div>
-                  `,
-				data: {
-					content: "<p>test ssr content</p>",
-					editorOption: {},
-				},
-				methods: {
-					onEditorReady(quill) {
-						eventLogs.push("ssr/onEditorReady");
-						eventLogs.push(quill instanceof Quill);
-					},
-				},
-				mounted() {
-					eventLogs.push("ssr/mounted");
-				},
-			}).$mount();
-			expect(eventLogs[0]).to.deep.equal("ssr/onEditorReady");
-			expect(eventLogs[1]).to.deep.equal(true);
-			expect(eventLogs[2]).to.deep.equal("ssr/mounted");
-			vm.content = "<p>test ssr change</p>";
-			Vue.nextTick(() => {
-				expect(vm.myQuillEditor.getText()).to.deep.equal(
-					"test ssr content\n"
-				);
-				done();
-			});
-		});
-	});
 
-	// 多个 SSR 平铺测试 placeholder: 'ssr placeholder'
-	describe("Multi edirot directive instance", () => {
-		it(" - should update value after any change text", (done) => {
-			const eventLogs = [];
-			const vm = new Vue({
-				template: `<div>
-                    <div class="quill-editor" 
-                         v-quill="buildOptions(key)"
-                         v-for="(content, key) in contents"
-                         @ready="onEditorReady(key)"
-                         :instance-name="'editor-' + key"
-                         :content="content"
-                         :key="key">
-                    </div>
-                  </div>
-                  `,
-				data: {
-					contents: {
-						a: "<p>a-test ssr content</p>",
-						b: "<p>b-test ssr content</p>",
-						c: "<p>c-test ssr content</p>",
-					},
-				},
-				methods: {
-					buildOptions(key) {
-						if (key === "a") {
-							return {};
-						}
-						if (key === "b") {
-							return {
-								placeholder: `${key}-ssr placeholder`,
-							};
-						}
-						if (key === "c") {
-							return {};
-						}
-					},
-					onEditorReady(key) {
-						eventLogs.push(`${key}-onEditorReady`);
-					},
-				},
-				mounted() {
-					eventLogs.push("ssr/mounted");
-				},
-			}).$mount();
-			expect(eventLogs[0]).to.deep.equal("a-onEditorReady");
-			expect(eventLogs[1]).to.deep.equal("b-onEditorReady");
-			expect(eventLogs[2]).to.deep.equal("c-onEditorReady");
-			expect(eventLogs[3]).to.deep.equal("ssr/mounted");
-			expect(vm["editor-a"] instanceof Quill).to.deep.equal(true);
-			expect(vm["editor-b"] instanceof Quill).to.deep.equal(true);
-			expect(vm["editor-c"] instanceof Quill).to.deep.equal(true);
-			expect(vm["editor-a"].getText()).to.deep.equal(
-				"a-test ssr content\n"
-			);
-			vm.contents.b = "<span>b-test ssr change</span>";
-			Vue.nextTick(() => {
-				Vue.nextTick(() => {
-					expect(vm["editor-b"].getText()).to.deep.equal(
-						"b-test ssr change\n"
-					);
-					expect(vm["editor-b"].editor.delta.ops).to.deep.equal([
-						{ insert: "b-test ssr change\n" },
-					]);
-					expect(vm["editor-b"].options.placeholder).to.deep.equal(
-						"b-ssr placeholder"
-					);
-					expect(vm["editor-c"].options.placeholder).to.deep.equal(
-						"global ssr placeholder"
-					);
-					done();
-				});
-			});
-		});
-	});
 });
