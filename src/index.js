@@ -1,6 +1,6 @@
 /*
  * quill-vuejs index.js
- * Author: surmon@foxmail.com
+ * Author: zhangchi3@outlook.com
  * Github: https://github.com/cg0101/quill-vuejs
  */
 
